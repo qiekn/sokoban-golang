@@ -1,4 +1,4 @@
-package main
+package components
 
 type Position struct {
 	X, Y int
