@@ -1,0 +1,11 @@
+{
+  "screenWidth": 640,
+  "screenHeight": 480,
+  "title": "Sokoban!",
+  "bgColor": {
+    "r": 141,
+    "g": 65,
+    "b": 65,
+    "a": 255
+  }
+}
