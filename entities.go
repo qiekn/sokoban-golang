@@ -1,12 +1,35 @@
 package main
 
-type Renderable struct {
+type Entity struct {
+	Id         int
+	Position   *Position
+	Renderable *Renderable
 }
-type Wall struct {
+
+type Manager struct {
+	entities   []*Entity
+	nextFreeId int
 }
-type Player struct {
+
+func NewManager() *Manager {
+	return &Manager{
+		entities:   make([]*Entity, 0),
+		nextFreeId: 0,
+	}
 }
-type Box struct {
+
+func (m *Manager) AddEntity(e *Entity) {
+	e.Id = m.nextFreeId // assign an Id
+	m.nextFreeId++
+	m.entities = append(m.entities, e)
 }
-type BoxSpot struct {
+
+func (m *Manager) GetEntitiesWithRenderable() []*Entity {
+	var result []*Entity
+	for _, e := range m.entities {
+		if e.Renderable != nil {
+			result = append(result, e)
+		}
+	}
+	return result
 }

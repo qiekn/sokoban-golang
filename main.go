@@ -9,8 +9,8 @@ import (
 func main() {
 	ebiten.SetWindowSize(640, 480)
 	ebiten.SetWindowTitle("Sokoban")
-
-	if err := ebiten.RunGame(&Game{}); err != nil {
+	game := NewGame()
+	if err := ebiten.RunGame(game); err != nil {
 		log.Fatal(err)
 	}
 }
