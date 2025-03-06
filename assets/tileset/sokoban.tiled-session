@@ -1,0 +1,95 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "../tileset.json": {
+            "scaleInDock": 1
+        },
+        "/Users/leoua7/GameDev/ebitengine/base-sokoban/assets/tilemap/1.json": {
+            "scale": 4.787109375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 60.99714402284782,
+                "y": 79.79763361893106
+            }
+        },
+        "/Users/leoua7/GameDev/ebitengine/base-sokoban/assets/tilemap/tileset.json": {
+            "scaleInDock": 1
+        },
+        "/Users/leoua7/GameDev/ebitengine/test/1.json": {
+            "scale": 3.8296875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 119.59200326397391,
+                "y": 82.25214198286415
+            }
+        },
+        "/Users/leoua7/GameDev/ebitengine/test/tileset.json": {
+            "scaleInDock": 1
+        },
+        "1.json": {
+            "scale": 5.565416666666667,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 106.55087220184173,
+                "y": 57.67762222055851
+            }
+        },
+        "2.json": {
+            "scale": 4.62,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 110.3896103896104,
+                "y": 81.6017316017316
+            }
+        },
+        "handout.json": {
+            "scale": 2.1516,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 102.24948875255623,
+                "y": 91.0949990704592
+            }
+        },
+        "handout.tmx": {
+            "scale": 5.565416666666667,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 122.0034438871004,
+                "y": 79.23935015347759
+            }
+        },
+        "tileset.json": {
+            "dynamicWrapping": false,
+            "scaleInDock": 3.94,
+            "scaleInEditor": 7.06
+        }
+    },
+    "last.externalTilesetPath": "/Users/leoua7/GameDev/ebitengine/base-sokoban/assets/tileset",
+    "last.imagePath": "/Users/leoua7/GameDev/ebitengine/base-sokoban/assets/images",
+    "map.height": 10,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 15,
+    "openFiles": [
+    ],
+    "project": "sokoban.tiled-project",
+    "recentFiles": [
+        "/Users/leoua7/GameDev/ebitengine/base-sokoban/assets/tilemap/1.json",
+        "1.json",
+        "2.json",
+        "/Users/leoua7/GameDev/ebitengine/test/1.json",
+        "handout.tmx",
+        "tileset.json",
+        "handout.json"
+    ],
+    "tileset.lastUsedFormat": "json",
+    "tileset.type": 1
+}
