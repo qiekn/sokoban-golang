@@ -1,7 +1,6 @@
 package scenes
 
 import (
-	"fmt"
 	"image/color"
 	"log"
 
@@ -36,12 +35,10 @@ func NewGameScene() *GameScene {
 func (g *GameScene) IsLoaded() bool { return g.isloaded }
 
 func (g *GameScene) OnEnter() {
-	fmt.Println("Game Scene Enter")
 }
 
 func (g *GameScene) OnExit() {
 	g.isloaded = false
-	fmt.Println("Game Scene Exit")
 }
 
 func (g *GameScene) Start() {
