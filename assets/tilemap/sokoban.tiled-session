@@ -8,18 +8,7 @@
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
-        "../tileset.json": {
-            "scaleInDock": 1
-        },
-        "/Users/leoua7/GameDev/ebitengine/base-sokoban/assets/tilemap/1.json": {
-            "scale": 4.787109375,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 60.99714402284782,
-                "y": 79.79763361893106
-            }
-        },
-        "/Users/leoua7/GameDev/ebitengine/base-sokoban/assets/tilemap/tileset.json": {
+        "/Users/leoua7/GameDev/ebitengine/base-sokoban/assets/tileset.json": {
             "scaleInDock": 1
         },
         "/Users/leoua7/GameDev/ebitengine/test/1.json": {
@@ -82,7 +71,7 @@
     ],
     "project": "sokoban.tiled-project",
     "recentFiles": [
-        "/Users/leoua7/GameDev/ebitengine/base-sokoban/assets/tilemap/1.json",
+        "1.json",
         "1.json",
         "2.json",
         "/Users/leoua7/GameDev/ebitengine/test/1.json",
