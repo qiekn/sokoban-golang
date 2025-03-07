@@ -42,6 +42,9 @@ func (g *GameScene) Update() {
 	if inpututil.IsKeyJustPressed(ebiten.KeyK) {
 		systems.SwitchToPrevLevel()
 	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyR) {
+		systems.Reset()
+	}
 	systems.MoveInputUpdate()
 }
 
