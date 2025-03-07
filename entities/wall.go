@@ -9,7 +9,7 @@ func NewWall(x, y int) managers.EntityId {
 	em := managers.GetEntityManager()
 	id := em.CreateEntity()
 	em.AddComponent(id, "Position", &components.Position{X: x, Y: y})
-	em.AddComponent(id, "Texture", &components.Texture{Name: "wall"})
+	em.AddComponent(id, "Texture", &components.Texture{Name: "wall", Order: 0})
 	em.AddComponent(id, "Collider", &components.Collider{})
 	return id
 }

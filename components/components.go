@@ -5,7 +5,8 @@ type Position struct {
 }
 
 type Texture struct {
-	Name string
+	Name  string
+	Order int // rendering order
 }
 
 type MoveInput struct {

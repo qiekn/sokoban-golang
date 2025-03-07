@@ -9,7 +9,7 @@ func NewPlayer(x, y int) managers.EntityId {
 	em := managers.GetEntityManager()
 	id := em.CreateEntity()
 	em.AddComponent(id, "Position", &components.Position{X: x, Y: y})
-	em.AddComponent(id, "Texture", &components.Texture{Name: "player"})
+	em.AddComponent(id, "Texture", &components.Texture{Name: "player", Order: 2})
 	em.AddComponent(id, "Collider", &components.Collider{})
 	em.AddComponent(id, "Movable", &components.Movable{})
 	em.AddComponent(id, "MoveInput", &components.MoveInput{})
