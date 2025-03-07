@@ -46,6 +46,9 @@ func (g *GameScene) Update() {
 		systems.Reset()
 	}
 	systems.MoveInputUpdate()
+	if systems.Win() {
+		systems.SwitchToNextLevel()
+	}
 }
 
 func (g *GameScene) Draw(screen *ebiten.Image) {
