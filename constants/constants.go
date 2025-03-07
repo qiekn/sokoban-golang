@@ -1,8 +1,8 @@
 package constants
 
 const (
-	ScreenWidth  = 16 * 15
-	ScreenHeight = 16 * 10
+	ScreenWidth  = 16 * 18
+	ScreenHeight = 16 * 12
 	Tilesize     = 16
 	LevelCounts  = 20
 )
