@@ -20,7 +20,7 @@ type Scene interface {
 	OnEnter()
 	OnExit()
 	IsLoaded() bool
-	UpdateSceneId() SceneId
+	NextSceneId() SceneId
 }
 
 type SceneManager struct {
@@ -42,14 +42,10 @@ func NewSceneManager() *SceneManager {
 func (m *SceneManager) Update() error {
 	// update current scene
 	activeScene := m.sceneMap[m.activeSceneId]
-	if !activeScene.IsLoaded() {
-		activeScene.Start()
-		activeScene.OnEnter()
-	}
 	activeScene.Update()
+	nextSceneId := activeScene.NextSceneId()
 
 	// check scene switch
-	nextSceneId := activeScene.UpdateSceneId()
 	if nextSceneId == ExitSceneId {
 		activeScene.OnExit()
 		return ebiten.Termination
@@ -57,6 +53,11 @@ func (m *SceneManager) Update() error {
 	if nextSceneId != m.activeSceneId {
 		activeScene.OnExit()
 		m.activeSceneId = nextSceneId
+		nextScene := m.sceneMap[nextSceneId]
+		if !nextScene.IsLoaded() {
+			nextScene.Start()
+		}
+		nextScene.OnEnter()
 	}
 	return nil
 }

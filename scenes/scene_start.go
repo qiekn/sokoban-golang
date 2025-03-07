@@ -29,7 +29,7 @@ func (s *StartScene) Start() { s.isloaded = true }
 
 func (s *StartScene) Update() {}
 
-func (s *StartScene) UpdateSceneId() SceneId {
+func (s *StartScene) NextSceneId() SceneId {
 	if inpututil.IsKeyJustPressed(ebiten.KeyEnter) {
 		return GameSceneId
 	}
@@ -38,6 +38,6 @@ func (s *StartScene) UpdateSceneId() SceneId {
 
 func (s *StartScene) OnEnter() {}
 
-func (s *StartScene) OnExit() { s.isloaded = false }
+func (s *StartScene) OnExit() {}
 
 var _ Scene = (*StartScene)(nil)

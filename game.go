@@ -7,18 +7,19 @@ import (
 )
 
 type Game struct {
-	sceneManager *scenes.SceneManager
+	sm *scenes.SceneManager
 }
 
 func NewGame() *Game {
 	return &Game{
-		sceneManager: scenes.NewSceneManager(),
+		sm: scenes.NewSceneManager(),
 	}
 }
 
 func (g *Game) Update() error {
-	res := g.sceneManager.Update()
-	if res == ebiten.Termination {
+	// scene switch update
+	res := g.sm.Update()
+	if res != nil {
 		return res
 	}
 
@@ -26,7 +27,7 @@ func (g *Game) Update() error {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	g.sceneManager.DrawScene(screen)
+	g.sm.DrawScene(screen)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {

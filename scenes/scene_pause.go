@@ -22,7 +22,7 @@ func (p *PauseScene) IsLoaded() bool { return p.isloaded }
 
 func (p *PauseScene) OnEnter() {}
 
-func (p *PauseScene) OnExit() { p.isloaded = false }
+func (p *PauseScene) OnExit() {}
 
 func (p *PauseScene) Start() { p.isloaded = true }
 
@@ -33,7 +33,7 @@ func (p *PauseScene) Draw(screen *ebiten.Image) {
 	ebitenutil.DebugPrint(screen, "Pause Menu")
 }
 
-func (p *PauseScene) UpdateSceneId() SceneId {
+func (p *PauseScene) NextSceneId() SceneId {
 	if inpututil.IsKeyJustPressed(ebiten.KeyP) {
 		return GameSceneId
 	}
