@@ -19,7 +19,7 @@ func IsMovableAt(x, y int) bool {
 
 func IsBoxAt(x, y int) bool {
 	em := managers.GetEntityManager()
-	id := em.GetEntityAt(x, y)
+	id := em.GetFirstEntityAt(x, y)
 	if id == 0 {
 		return false
 	}

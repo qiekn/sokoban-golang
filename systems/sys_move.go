@@ -24,7 +24,7 @@ func MovePlayer(dx, dy int) {
 			return
 		}
 		// 2. can push obstacle away
-		if PushEntity(em.GetEntityAt(newX, newY), dx, dy) {
+		if PushEntity(em.GetFirstEntityAt(newX, newY), dx, dy) {
 			pos.X, pos.Y = newX, newY
 		}
 	}
