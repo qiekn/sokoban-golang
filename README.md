@@ -6,7 +6,7 @@
 ## To-do list
 
 - [x] scene manager  
-- [ ] reset
+- [x] reset
 - [ ] undo
 - [ ] in-game level editor
 
