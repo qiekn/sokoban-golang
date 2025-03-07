@@ -121,6 +121,10 @@ func (lm *LevelManager) GetCurrentLevel() *level {
 	return nil
 }
 
+func (lm *LevelManager) GetCurrentLevelId() int {
+	return lm.current
+}
+
 func (lm *LevelManager) GetCurrentLevelLayers() *[]layer {
 	level := lm.GetCurrentLevel()
 	return &level.Layers

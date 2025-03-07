@@ -1,10 +1,15 @@
 package systems
 
 import (
+	"bytes"
 	"image/color"
+	"log"
+	"os"
 	"sort"
+	"strconv"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/text/v2"
 	"github.com/qiekn/components"
 	"github.com/qiekn/constants"
 	"github.com/qiekn/managers"
@@ -61,4 +66,29 @@ func Render(screen *ebiten.Image) {
 		opt.GeoM.Translate(float64(offsetX), float64(offsetY))
 		screen.DrawImage(managers.GetTextureManager().GetTexture(re.texture.Name), opt)
 	}
+	renderLevelInfo(screen)
+}
+
+func renderLevelInfo(screen *ebiten.Image) {
+	levelId := managers.GetLevelManager().GetCurrentLevelId() + 1
+	levelInfo := "w0/level-" + strconv.Itoa(levelId)
+
+	fontData, err := os.ReadFile("assets/fonts/pypx.ttf")
+	if err != nil {
+		log.Fatalf("read font failed %v", err)
+	}
+
+	s, err := text.NewGoTextFaceSource(bytes.NewReader(fontData))
+	if err != nil {
+		log.Fatalf("parse font failed: %v", err)
+	}
+
+	opt := &text.DrawOptions{}
+	opt.ColorScale.ScaleWithColor(color.White)
+	opt.GeoM.Translate(3, 3)
+
+	text.Draw(screen, levelInfo, &text.GoTextFace{
+		Source: s,
+		Size:   8,
+	}, opt)
 }
