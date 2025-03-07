@@ -6,7 +6,6 @@ import (
 )
 
 func MovePlayer(dx, dy int) {
-	// find relevant position components
 	em := managers.GetEntityManager()
 	ids := em.GetEntitiesWithComponents("MoveInput", "Position", "Movable")
 	for _, id := range ids {
@@ -18,26 +17,40 @@ func MovePlayer(dx, dy int) {
 		newX := pos.X + dx
 		newY := pos.Y + dy
 
-		// 1. move without hitting collider
-		if !em.HasComponentAt(newX, newY, "Collider") {
+		// 1. without hitting collider, just go
+		if !em.HasComponentsAt(newX, newY, "Collider") {
 			pos.X, pos.Y = newX, newY
 			return
 		}
-		// 2. can push obstacle away
-		if PushEntity(em.GetFirstEntityAt(newX, newY), dx, dy) {
+		// 2. hitting collider, try push
+		if pushCollider(getColliderAt(newX, newY), dx, dy) {
 			pos.X, pos.Y = newX, newY
 		}
 	}
 }
 
-// push without hitting any collider
-func PushEntity(id managers.EntityId, dx, dy int) bool {
+////////////////////////////////////////////////////////////////////////
+//                          Helper Functions                          //
+////////////////////////////////////////////////////////////////////////
+
+func getColliderAt(x, y int) managers.EntityId {
 	em := managers.GetEntityManager()
-	// this entity is movable
-	if checker := em.HasComponents(id, "Collider", "Movable", "Position", "Texture"); checker {
+	ids := em.GetEntitiesAt(x, y)
+	for _, id := range ids {
+		if em.HasComponents(id, "Collider") {
+			return id
+		}
+	}
+	return 0
+}
+
+func pushCollider(id managers.EntityId, dx, dy int) bool {
+	em := managers.GetEntityManager()
+	// collider is movable
+	if checker := em.HasComponents(id, "Collider", "Movable"); checker {
 		if pos, ok := em.GetComponent(id, "Position").(*components.Position); ok {
-			// will hit any collider
-			if em.HasComponentAt(pos.X+dx, pos.Y+dy, "Collider") {
+			// hit another collider (player can only push 1 box at once)
+			if em.HasComponentsAt(pos.X+dx, pos.Y+dy, "Collider") {
 				return false
 			}
 			pos.X += dx

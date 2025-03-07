@@ -8,10 +8,10 @@ func IsMovableAt(x, y int) bool {
 	em := managers.GetEntityManager()
 
 	// no collider
-	if !em.HasComponentAt(x, y, "Collider") {
+	if !em.HasComponentsAt(x, y, "Collider") {
 		return true
 	}
-	if em.HasComponentAt(x, y, "Movable") {
+	if em.HasComponentsAt(x, y, "Movable") {
 		return true
 	}
 	return false

@@ -64,18 +64,6 @@ func (em *EntityManager) GetFirstEntityAt(x, y int) EntityId {
 	return 0
 }
 
-func (em *EntityManager) GetEntitiesAt(x, y int) []EntityId {
-	var res []EntityId
-	ids := em.GetEntitiesWithComponents("Position")
-	for _, id := range ids {
-		pos, ok := em.GetComponent(id, "Position").(*components.Position)
-		if ok && pos.X == x && pos.Y == y {
-			res = append(res, id)
-		}
-	}
-	return res
-}
-
 ////////////////////////////////////////////////////////////////////////
 //                     Single Entity Component(s)                     //
 ////////////////////////////////////////////////////////////////////////
@@ -104,6 +92,19 @@ func (em *EntityManager) HasComponents(entityId EntityId, names ...string) bool 
 	return true
 }
 
+func (em *EntityManager) HasComponentsAt(x, y int, names ...string) bool {
+	ids := em.GetEntitiesAt(x, y)
+	res := false
+	for _, id := range ids {
+		for _, name := range names {
+			if em.HasComponents(id, name) {
+				res = true
+			}
+		}
+	}
+	return res
+}
+
 func (em *EntityManager) GetComponent(entityId EntityId, name string) any {
 	if em.HasEntity(entityId) {
 		comp := em.emMap[entityId][name]
@@ -112,27 +113,17 @@ func (em *EntityManager) GetComponent(entityId EntityId, name string) any {
 	return nil
 }
 
-func (em *EntityManager) HasComponentAt(x, y int, name string) bool {
-	ids := em.GetEntitiesAt(x, y)
-	res := false
-	for _, id := range ids {
-		if em.HasComponents(id, name) {
-			res = true
-		}
-	}
-	return res
-}
-
 ////////////////////////////////////////////////////////////////////////
 //                     All Entities Component(s)                      //
 ////////////////////////////////////////////////////////////////////////
 
-func (em *EntityManager) GetComponentsFromAll(name string) []any {
-	var res []any
-	for _, components := range em.emMap {
-		component, exists := components[name]
-		if exists {
-			res = append(res, component)
+func (em *EntityManager) GetEntitiesAt(x, y int) []EntityId {
+	var res []EntityId
+	ids := em.GetEntitiesWithComponents("Position")
+	for _, id := range ids {
+		pos, ok := em.GetComponent(id, "Position").(*components.Position)
+		if ok && pos.X == x && pos.Y == y {
+			res = append(res, id)
 		}
 	}
 	return res
@@ -154,6 +145,17 @@ func (em *EntityManager) GetEntitiesWithComponents(names ...string) []EntityId {
 		}
 	}
 	return entities
+}
+
+func (em *EntityManager) GetComponentsFromAll(name string) []any {
+	var res []any
+	for _, components := range em.emMap {
+		component, exists := components[name]
+		if exists {
+			res = append(res, component)
+		}
+	}
+	return res
 }
 
 func (em *EntityManager) Clear() {
