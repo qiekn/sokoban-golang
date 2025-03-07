@@ -3,23 +3,16 @@ package scenes
 import (
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
-	"github.com/qiekn/managers"
 	"github.com/qiekn/systems"
 )
 
 type GameScene struct {
 	isloaded bool
-	lm       *managers.LevelManager
-	em       *managers.EntityManager
-	tm       *managers.TextureManager
 }
 
 func NewGameScene() *GameScene {
 	gameScene := &GameScene{
 		isloaded: false,
-		lm:       managers.GetLevelManager(),
-		em:       managers.GetEntityManager(),
-		tm:       managers.GetTextureManager(),
 	}
 	return gameScene
 }

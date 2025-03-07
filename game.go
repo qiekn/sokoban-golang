@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/qiekn/constants"
+	"github.com/qiekn/managers"
 	"github.com/qiekn/scenes"
 )
 
@@ -16,11 +17,16 @@ func NewGame() *Game {
 	}
 }
 
+func (g *Game) InitManagers() {
+	managers.GetLevelManager()
+	managers.GetEntityManager()
+	managers.GetTextureManager()
+}
+
 func (g *Game) Update() error {
-	// scene switch update
-	res := g.sm.Update()
-	if res != nil {
-		return res
+	// scene update
+	if err := g.sm.Update(); err != nil {
+		return err
 	}
 
 	return nil
@@ -31,6 +37,5 @@ func (g *Game) Draw(screen *ebiten.Image) {
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
-	// return len(g.board[0]) * g.tileSize, len(g.board) * g.tileSize
 	return constants.ScreenWidth, constants.ScreenHeight
 }

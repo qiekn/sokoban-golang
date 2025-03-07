@@ -11,6 +11,7 @@ func main() {
 	ebiten.SetWindowTitle("Sokoban")
 	ebiten.SetWindowResizingMode(ebiten.WindowResizingModeEnabled)
 	game := NewGame()
+	game.InitManagers()
 	if err := ebiten.RunGame(game); err != nil {
 		log.Fatal(err)
 	}

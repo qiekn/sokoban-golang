@@ -10,24 +10,26 @@ import (
 
 func InitCurrentLevel() {
 	managers.GetEntityManager().Clear()
-	layer := managers.GetLevelManager().GetCurrentLevel()
-	if layer == nil {
-		fmt.Println("layer is nil")
+	layers := managers.GetLevelManager().GetCurrentLevelLayers()
+	if layers == nil {
+		fmt.Println("sys_level: layers is nil")
 		return
 	}
-	m := layer.Height
-	n := layer.Width
-	for y := range m {
-		for x := range n {
-			switch layer.Data[y*n+x] - layer.Gid {
-			case constants.Tile_Wall:
-				entities.NewWall(x, y)
-			case constants.Tile_Target:
-				entities.NewTarget(x, y)
-			case constants.Tile_Player:
-				entities.NewPlayer(x, y)
-			case constants.Tile_Box:
-				entities.NewBox(x, y)
+	for _, layer := range *layers {
+		m := layer.Height
+		n := layer.Width
+		for y := range m {
+			for x := range n {
+				switch layer.Data[y*n+x] - layer.Gid {
+				case constants.Tile_Wall:
+					entities.NewWall(x, y)
+				case constants.Tile_Target:
+					entities.NewTarget(x, y)
+				case constants.Tile_Player:
+					entities.NewPlayer(x, y)
+				case constants.Tile_Box:
+					entities.NewBox(x, y)
+				}
 			}
 		}
 	}

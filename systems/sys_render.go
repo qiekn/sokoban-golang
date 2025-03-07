@@ -24,11 +24,11 @@ func Render(screen *ebiten.Image) {
 	screenWidth := screen.Bounds().Dx()
 	screenHeight := screen.Bounds().Dy()
 
-	layerWidth := managers.GetLevelManager().GetCurrentLevel().Width
-	layerHeight := managers.GetLevelManager().GetCurrentLevel().Height
+	levelWidth := managers.GetLevelManager().GetCurrentLevel().Width
+	levelHeight := managers.GetLevelManager().GetCurrentLevel().Height
 
-	offsetX := (screenWidth - layerWidth*constants.Tilesize) / 2
-	offsetY := (screenHeight - layerHeight*constants.Tilesize) / 2
+	offsetX := (screenWidth - levelWidth*constants.Tilesize) / 2
+	offsetY := (screenHeight - levelHeight*constants.Tilesize) / 2
 
 	// get components
 	em := managers.GetEntityManager()
